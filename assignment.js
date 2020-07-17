@@ -1,9 +1,15 @@
+//feet to Mile converter function name is feeToMile.
 function feetToMile(feet){
+    if(feet<1){
+        return 'Please enter a valid number.';
+    }
    const mile= feet/5280;
-   return mile;
+   return mile+' mile';
 }
-// console.log(feetToMile(15000));
+const result=feetToMile(100);
+console.log( result);
 
+//Takes three different furniture itemts number and calculate how many wood. 
 function woodCalculator(chair,table,bed){
     const chairWood=chair*1;
     const tablaWood=table*3;
@@ -11,11 +17,12 @@ function woodCalculator(chair,table,bed){
     totalWood=chairWood+tablaWood+bedWood;
     return 'Total wood requirement is '+ totalWood + ' Cubic Feet.';
 }
-console.log(woodCalculator(1,1,1));
+console.log(woodCalculator(1,1,1));                     
 
+//Take a floor input and calculate how many brick is need for that floor.
 function brickCalculator(floor){
     if(floor<1 || isNaN(floor)==true){
-        return "It's a invalid number."
+        return "It's a invalid number.";
     }
     let totalBrick;
     let totalHeight;
@@ -34,62 +41,22 @@ function brickCalculator(floor){
     }
     return totalBrick;
 }
-console.log("Total brick requirement is = "+brickCalculator(13)/1000 +" Thousand");
-/*function tinyFriend(array){
-    
-    return smallName;
+console.log("Total brick requirement is "+brickCalculator(13)/1000 +" Thousand");
 
-    function finyFriend(array){
-        let minName=[];
-        minName[0]=array[0];
-        for(let i =1;i<array.length;i++){
-            let element=array[i];
-            let previesElement=minName[i-1];
-            if(element.length<=previesElement.length){
-                minName.push(element);
-            }
+//Take a input friends name array and return the smallest name.
+function tinyFriend(array){
+    if (typeof array!="object"){
+        return 'Please input a array.';
+    }
+    let smallName=array[0];
+    for (let i=1; i< array.length; i++){
+        let element=array[i];
+        if(smallName.length > element.length ){
+            smallName=element;
         }
-        return minName;
     }
-let arr=['osman','akash','ovi','omor'];
-console.log(finyFriend(arr));}*/
-    
-//     let lengthArray=[];
-//     for(let i=0; i<array.length; i++){
-//         let element=array[i];
-//         let elementLength=element.length;
-//         lengthArray.push(elementLength);
-//     }
-//     let minLength=Math.min.apply(null,lengthArray);
-// let minLengthPossition=[];
-// for (let i=0; i<lengthArray.length;i++){
-//     if(lengthArray[i]==minLength){
-//         minLengthPossition.push(i);
-//     }
-// }
-
-// console.log(lengthArray);
-// console.log(minLength);
-// console.log(minLengthPossition);
-let array=['osman','goni','omor','akash','rashidul',]
-var minName=array[0];
-for(let i=1; i<array.length; i++){
-    
-    let element=array[i];
-    if(element.length< minName.length){
-        minName=element;
-      
-    }
-    
-
+    return smallName;
 }
-let arr=[];
-let minNameLength=minName.length;
-for(let i=1; i<array.length; i++){
-    if(array[i].length==minNameLength){
-        arr.push(i);
-    }
-}
-array[arr[0]]
 
-console.log(arr);
+const friendName=['osman','goni','akash','omor','rashidul'];
+console.log("The smallest name under my friends names is '"+tinyFriend(friendName)+"'.");
